@@ -1,8 +1,10 @@
-import whiteLogo from "../../assets/images/logo-abbakery-500-200-branco";
+import whiteLogo from "../../assets/images/logo-abbakery-500-200-branco.png";
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import useSignUp from "../../hooks/api/useSignUp";
+import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import styled from "styled-components";
 
 export default function Enroll() {
     const [name, setName] = useState("");
@@ -24,19 +26,73 @@ export default function Enroll() {
         }
     }
 
-
     return(
-        <>
-        <Container>
+        <AuthPagesBackground>
             <img src={whiteLogo} alt="AbBakery"/>
-            <form onSubmit={submit}>
-                <Input label="Your name" type="text" fullWidth value={name} onChange={(e) => setName(e.target.value)} />
-                <Input label="E-mail" type="text" fullWidth value={email} onChange={(e) => setEmail(e.target.value)} />
-                <Input label="Password" type="password" fullWidth value={password} onChange={(e) => setPassword(e.target.value)} />
-                <Button type="submit" disabled={loadingSignUp}>Sign-up!</Button>
-            </form>
-            <Link to="/sign-in">Already registered? Click here to sign in!</Link>
-        </Container>
-        </>
+                <form onSubmit={submit}>
+                    <input placeholder="Your name" type="text" fullWidth value={name} onChange={(e) => setName(e.target.value)} />
+                    <input placeholder="E-mail" type="text" fullWidth value={email} onChange={(e) => setEmail(e.target.value)} />
+                    <input placeholder="Password" type="password" fullWidth value={password} onChange={(e) => setPassword(e.target.value)} />
+                    <button type="submit" disabled={loadingSignUp}>Sign-up!</button>
+                    <Link to="/sign-in">Already registered? Sign in!</Link>
+                </form>
+        </AuthPagesBackground>
     )
 }
+
+const AuthPagesBackground = styled.div`
+    width: 100vw;
+    height: 100vh;
+    background: #3C4858;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    img {
+        width: 146px;
+        height: 60px;
+    }
+
+    form {
+        width: 25vw;
+        height: 40vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-bottom: 70px;
+    }
+
+    input {
+        height: 30px;
+        margin-top: 5px;
+        border-radius: 3px;
+        border-style: hidden;
+        color: #999999;
+        font-size: 10px;
+        padding-left: 8px;
+    }
+
+    button {
+        height: 30px;
+        background: #F20267;
+        margin-top: 6px;
+        margin-bottom: 16px;
+        border-radius: 3px;
+        border-style: hidden;
+        color: #FFFFFF;
+    }
+
+    a {
+        text-decoration: none;
+        color: #FFFFFF;
+        font-size: 10px;
+        text-align: center;
+        line-height: 16px;
+      
+        :hover {
+          text-decoration: underline;
+        }
+    }
+`
+
