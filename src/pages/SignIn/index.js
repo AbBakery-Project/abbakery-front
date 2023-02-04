@@ -1,19 +1,19 @@
-import whiteLogo from "../../assets/images/logo-abbakery-500-200-branco.png";
-import { useState } from "react";
-import { useNavigate } from 'react-router-dom';
-import useSignUp from "../../hooks/api/useSignUp";
-import SignUpContext from "../../contexts/SignUpContext";
-import { Link } from 'react-router-dom';
+import greyLogo from "../../assets/images/logo-abbakery-500-200-cinza.png";
+import { useState, useContext } from "react";
+import { useNavigate, Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
+
+import UserContext from '../../contexts/UserContext';
+
+import useSignIn from "../../hooks/api/useSignIn";
 import styled from "styled-components";
 
-export default function Enroll() {
-    const [name, setName] = useState("");
+export default function SignIn() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const { loadingSignUp, signUp } = useSignUp();
-    const { setSignUpData } = useContext(SignUpContext);
+    const { loadingSignIn, signIn } = useSignIn();
+    const { setUserData } = useContext(UserContext);
 
     const navigate = useNavigate();
 
@@ -21,24 +21,23 @@ export default function Enroll() {
         event.preventDefault();
 
         try {
-            const signUpData = await signUp(name, email, password);
-            setSignUpData(signUpData);
-            toast("Succesfully registered!");
-            navigate("/sign-in");
+            const userData = await signIn(email, password);
+            setUserData(userData);
+            toast("Succesfully logged in!");
+            navigate("/dashboard");
         } catch (error) {
-            toast("Sorry! Your register failed :(");
+            toast("Sorry! You could not log in :(");
         }
     }
 
     return(
         <AuthPagesBackground>
-            <img src={whiteLogo} alt="AbBakery"/>
+            <img src={greyLogo} alt="AbBakery"/>
                 <form onSubmit={submit}>
-                    <input placeholder="Your name" type="text" value={name} onChange={(e) => setName(e.target.value)} />
                     <input placeholder="E-mail" type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
                     <input placeholder="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-                    <button type="submit" disabled={loadingSignUp}>Sign-up!</button>
-                    <Link to="/sign-in">Already registered? Sign in!</Link>
+                    <button type="submit" disabled={loadingSignIn}>Sign-in!</button>
+                    <Link to="/">Not registered yet? Sign up!</Link>
                 </form>
         </AuthPagesBackground>
     )
@@ -47,7 +46,7 @@ export default function Enroll() {
 const AuthPagesBackground = styled.div`
     width: 100vw;
     height: 100vh;
-    background: #3C4858;
+    background: #FFFFFE;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -71,7 +70,7 @@ const AuthPagesBackground = styled.div`
         height: 30px;
         margin-top: 5px;
         border-radius: 3px;
-        border-style: hidden;
+        border: 1px solid #999999;
         color: #999999;
         font-size: 10px;
         padding-left: 8px;
@@ -89,7 +88,7 @@ const AuthPagesBackground = styled.div`
 
     a {
         text-decoration: none;
-        color: #FFFFFF;
+        color: #3C4858;
         font-size: 10px;
         text-align: center;
         line-height: 16px;
