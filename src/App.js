@@ -4,6 +4,7 @@ import Enroll from './pages/Enroll';
 import SignIn from './pages/SignIn';
 import { UserProvider } from './contexts/UserContext';
 import { SignUpProvider } from './contexts/SignUpContext';
+import Dashboard from './pages/Dashboard';
 
 export default function App() {
     return (
@@ -15,7 +16,7 @@ export default function App() {
                         <Routes>
                             <Route path="/" element={<Enroll/>}/>
                             <Route path="/sign-in" element={<SignIn/>}/>
-                            <Route path="/dashboard" />
+                            <Route path="/dashboard" element={<Dashboard/>}/>
                         </Routes>
                     </Router>
                 </UserProvider>

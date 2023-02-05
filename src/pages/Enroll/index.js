@@ -1,5 +1,5 @@
 import whiteLogo from "../../assets/images/logo-abbakery-500-200-branco.png";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from 'react-router-dom';
 import useSignUp from "../../hooks/api/useSignUp";
 import SignUpContext from "../../contexts/SignUpContext";
