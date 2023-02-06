@@ -1,30 +1,29 @@
 import { useState } from "react";
 import styled from "styled-components";
 import Sidebar from "../../components/Sidebar";
+import Modal from "../../components/Modal";
 
 export default function Dashboard() {
     const [liveText, liveTextUpdated] = useState('');
-
-    async function submit(event) {
-        //POST para API com Token e Body (text), para converter com auxílio da REST API Azure
-    }
+    const [openModal, toggleModal] = useState(false);
 
     return(
-        <>
         <Body>
+        { openModal ? <Modal toggleModal={toggleModal} text={liveText}/> : null} 
         <Sidebar/>
             <Right>
                 <h2>Select the voice of your preference</h2>
                 <input placeholder="Write/paste your yummy text here..." type="text" value={liveText} onChange={(e) => liveTextUpdated(e.target.value)} />
-                <button onClick={submit}>Bake!</button>
+                <button onClick={() => {toggleModal(true)}}>Bake!</button>
             </Right>
         </Body>
-        </>
     )
 }
 
 const Body = styled.div`
     display: flex;
+    justify-content: center;
+    align-items: center;
 `
 
 const Right = styled.div`

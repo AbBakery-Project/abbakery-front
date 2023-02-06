@@ -12,7 +12,7 @@ export default function Enroll() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const { loadingSignUp, signUp } = useSignUp();
+    const { signUpLoading, signUp } = useSignUp();
     const { setSignUpData } = useContext(SignUpContext);
 
     const navigate = useNavigate();
@@ -37,7 +37,7 @@ export default function Enroll() {
                     <input placeholder="Your name" type="text" value={name} onChange={(e) => setName(e.target.value)} />
                     <input placeholder="E-mail" type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
                     <input placeholder="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-                    <button type="submit" disabled={loadingSignUp}>Sign-up!</button>
+                    <button type="submit" disabled={signUpLoading}>Sign-up!</button>
                     <Link to="/sign-in">Already registered? Sign in!</Link>
                 </form>
         </AuthPagesBackground>
