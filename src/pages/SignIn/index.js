@@ -24,7 +24,7 @@ export default function SignIn() {
             const userData = await signIn(email, password);
             setUserData(userData);
             toast("Succesfully logged in!");
-            navigate("/dashboard");
+            navigate('/dashboard');
         } catch (error) {
             toast("Sorry! You could not log in :(");
         }

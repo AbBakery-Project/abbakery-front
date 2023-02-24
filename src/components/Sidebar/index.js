@@ -1,12 +1,16 @@
+import { useContext } from "react";
+import SignUpContext from "../../contexts/SignUpContext";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import whiteLogo from "../../assets/images/logo-abbakery-500-200-branco.png";
 
 export default function Sidebar() {
+    const { signUpData } = useContext(SignUpContext);
+
     return(
         <SidebarLeft>
             <img src={whiteLogo} alt="AbBakery"/>
-            <h2>Hello there, Name!</h2>
+            <h2>Hello there, {signUpData.name}!</h2>
             <Link to="/sign-in">My baked files</Link>
             <Link to="/sign-in">Log out</Link>
         </SidebarLeft>
