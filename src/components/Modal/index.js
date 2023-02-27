@@ -8,11 +8,14 @@ export default function Modal({ toggleModal, text }) {
 
     const { newAudioRequestLoading, newAudioRequest } = useSendAudioRequest();
 
-    async function submit(event) {
-        event.preventDefault();
+    async function submit() {
+        const body = {
+            audioName,
+            text
+        }
 
         try {
-            await newAudioRequest(audioName, text);
+            await newAudioRequest(body);
             toast("Bake request sent successfully!");
             toggleModal(false);
         } catch (error) {

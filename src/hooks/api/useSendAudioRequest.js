@@ -9,7 +9,7 @@ export default function useSendAudioRequest() {
     loading: newAudioRequestLoading,
     error: newAudioRequestError,
     act: newAudioRequest,
-  } = useAsync(() => newAudioRequestApi.postNewAudio(token));
+  } = useAsync((data) => newAudioRequestApi.postNewAudio(data, token), false);
 
   return {
     newAudioRequestLoading,

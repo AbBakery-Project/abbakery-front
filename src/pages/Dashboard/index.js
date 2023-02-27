@@ -7,6 +7,10 @@ export default function Dashboard() {
     const [liveText, liveTextUpdated] = useState('');
     const [openModal, toggleModal] = useState(false);
 
+    async function open() {
+        toggleModal(true);
+    }
+
     return(
         <Body>
         { openModal ? <Modal toggleModal={toggleModal} text={liveText}/> : null} 
@@ -14,7 +18,7 @@ export default function Dashboard() {
             <Right>
                 <h2>Select the voice of your preference</h2>
                 <input placeholder="Write/paste your yummy text here..." type="text" value={liveText} onChange={(e) => liveTextUpdated(e.target.value)} />
-                <button onClick={() => {toggleModal(true)}}>Bake!</button>
+                <button onClick={open}>Bake!</button>
             </Right>
         </Body>
     )
