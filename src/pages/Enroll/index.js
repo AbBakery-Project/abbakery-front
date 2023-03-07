@@ -1,4 +1,4 @@
-import whiteLogo from "../../assets/images/logo-abbakery-500-200-branco.png";
+import whiteLogo from "../../assets/images/logo-abbakery-500-200-white.png";
 import { useState, useContext } from "react";
 import { useNavigate } from 'react-router-dom';
 import useSignUp from "../../hooks/api/useSignUp";
@@ -54,8 +54,8 @@ const AuthPagesBackground = styled.div`
     align-items: center;
 
     img {
-        width: 146px;
-        height: 60px;
+        width: 195px;
+        height: 80px;
     }
 
     form {
@@ -68,23 +68,36 @@ const AuthPagesBackground = styled.div`
     }
 
     input {
+        background: transparent;
         height: 30px;
         margin-top: 5px;
-        border-radius: 3px;
-        border-style: hidden;
-        color: #999999;
+        border: 1px solid var(--white);
+        border-radius: 16px;
         font-size: 10px;
         padding-left: 8px;
+        
+        ::placeholder {
+            color: var(--white);
+        }
+    } 
+
+    textarea:focus, input:focus {
+        color: var(--white);
     }
 
     button {
-        height: 30px;
-        background: #F20267;
-        margin-top: 6px;
+        height: 56px;
+        background: var(--green);
+        font-family: 'Lexend';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+        margin-top: 10px;
         margin-bottom: 16px;
-        border-radius: 3px;
+        border-radius:16px;
         border-style: hidden;
-        color: #FFFFFF;
+        color: var(--white);
     }
 
     a {

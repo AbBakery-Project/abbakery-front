@@ -25,19 +25,27 @@ export default function Dashboard() {
 }
 
 const Body = styled.div`
-    display: flex;
+    
     justify-content: center;
     align-items: center;
 `
 
 const Right = styled.div`
-    width: 75vw;
+    position: absolute;
+    top: 0px;
+    left: 22vw;
+    right: 0px;
+    z-index: 1;
+    bottom: 0px;
+    border-radius: 40px 0px 0px 40px;
+    width: 70vw;
     height: 100vh;
+    background-color: var(--light-grey);
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding-left: 12vw;
     padding-top: 30px;
-    margin-left: 50px;
 
     h2 {
         font-size: 12px;
@@ -48,10 +56,11 @@ const Right = styled.div`
     input {
         width: 60vw;
         height: 60vh;
+        z-index: 0;
         overflow: scroll;
-        background: #F5F5F5;
-        border: 0.5px solid #3C4858;
-        border-radius: 3px;
+        background: var(--white);
+        border: none;
+        border-radius: 24px;
     } 
 
     input::placeholder {
@@ -65,11 +74,16 @@ const Right = styled.div`
 
     button {
         width: 60vw;
-        height: 30px;
-        background: #F20267;
+        height: 56px;
+        background: var(--green);
+        font-family: 'Lexend';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
         margin-top: 10px;
         margin-bottom: 16px;
-        border-radius: 3px;
+        border-radius: 16px;
         border-style: hidden;
         color: #FFFFFF;
     }

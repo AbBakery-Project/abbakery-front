@@ -2,7 +2,7 @@ import { useContext } from "react";
 import SignUpContext from "../../contexts/SignUpContext";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import whiteLogo from "../../assets/images/logo-abbakery-500-200-branco.png";
+import whiteLogo from "../../assets/images/logo-abbakery-500-200-white.png";
 
 export default function Sidebar() {
     const { signUpData } = useContext(SignUpContext);
@@ -18,9 +18,13 @@ export default function Sidebar() {
 }
 
 const SidebarLeft = styled.div`
-    width: 25vw;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    bottom: 0px;
     height: 100vh;
-    background: #3C4858;
+    width: 30vw;
+    background: var(--dark-grey);
     display: flex;
     flex-direction: column;
     align-items: top;
@@ -29,12 +33,15 @@ const SidebarLeft = styled.div`
     padding-right: 5px;
 
     img {
-        width: 18vw;
-        height: 9,5vh;
+        width: 120px;
+        height: 50px;
     }
 
     h2 {
-        font-size: 13px;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 24px;
         color: #FFFFFF;
         padding-top: 5px;
         padding-left: 10px;
